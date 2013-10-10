@@ -89,8 +89,12 @@ static int MyClass::getNiCount(const charType *src)
 template <typename charType> 
 static std::basic_string<charType> MyClass::replaceNiWithNI(const charType *src)
 {
-  if (src == NULL)
-	 return src;
+  //A NULL pointer will return itself, since we can't replace in this case
+  if(src == NULL)
+  {
+	  /* here i am stuck. i can't return NULL because it isn't the type of std::basic_string<charType> what to do?
+	  and i can't initiliaze std::basic_string<charType> == "" - i can't even return an empty string, what to do?*/
+  }
 
   std::basic_string<charType> sourceString = src;
 
@@ -98,19 +102,19 @@ static std::basic_string<charType> MyClass::replaceNiWithNI(const charType *src)
   if(sourceString.length() < 2)
      return sourceString;
 
-  std::basic_string<charType> stringWithNI(sourceString);
+  std::basic_string<charType> stringWithNIOnly(sourceString);
   std::basic_string<charType> patternNi , replacementChar;
   getReplacementChar(replacementChar); 
   getNiPattern(patternNi);    
-  std::string::size_type currentLocation = stringWithNI.find(patternNi);
+  std::string::size_type currentLocation = stringWithNIOnly.find(patternNi);
 
   //Going through the string and replacing all the Ni with NI, by replacing i after N with I
   while(currentLocation != std::basic_string<charType>::npos)
   {
-    stringWithNI.replace((currentLocation + 1), 1, replacementChar);
-    currentLocation = stringWithNI.find(patternNi, currentLocation + 2);
+    stringWithNIOnly.replace((currentLocation + 1), 1, replacementChar);
+    currentLocation = stringWithNIOnly.find(patternNi, currentLocation + 2);
   }
-  return stringWithNI;
+  return stringWithNIOnly;
 }
 
 template <typename charType>
@@ -122,8 +126,8 @@ static void MyClass::printInformation(const charType *src)
 	return;
   }
   std::cout << "Found " << getNiCount(src) << " occurrences of Ni. New string: " ;
-  std::basic_string<charType> stringWithNI = replaceNiWithNI(src);
-  printNewString(stringWithNI);
+  std::basic_string<charType> stringWithNIOnly = replaceNiWithNI(src);
+  printNewString(stringWithNIOnly);
   std::cout << std::endl;
 }
 
