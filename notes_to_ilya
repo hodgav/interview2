@@ -1,0 +1,14 @@
+as you can see, i have two functions which i am having trouble deciding what to do in case of which
+src is a NULL Pointer.
+
+in getNiCount i return -1 if the pointer is NULL. do you think in this case i should return NULL too?
+
+in replaceNiWithNI
+i have a problem. 
+the return type of this function is std::basic_string<charType>
+i can not , on any case, return NULL or -1.
+i did use templates there, as you can see.
+
+please suggest me what can be done
+
+thanks.
