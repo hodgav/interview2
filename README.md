@@ -56,6 +56,11 @@ Task description:
  - getNiCount should return the number of occurrences of "Ni" within szTestString1/2 (case sensitive)
  - replaceNiWithNI should replace all occurrences of "Ni" in szTestString1/2 with "NI" (case sensitive)
 
+ [COMMENT BY ME:
+they ask to replace all the "Ni" with "NI" what i did was constructing a new string and returning it.
+does it seem fine to you? because i a get const char, i don't want to change it.
+and i also can't use malloc/new... so i think it's the only solution here. [END OF COMMENT BY ME]
+
 2. invoke the 2 functions getNiCount and replaceNiWithNI.
 
 3. Display the string given in the last comment on screen. X and Y should be replaced with the real values
