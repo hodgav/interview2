@@ -21,6 +21,7 @@ static void getNiPattern(std::basic_string<wchar_t> &pat) {pat = L"Ni";}
  */
 static void getEmptyString(std::basic_string<char> &pat) {pat = "";}
 static void getEmptyString(std::basic_string<wchar_t> &pat) {pat = L"";}
+
 /**
  * set a pattern of "I" - for either char or wchar_t in order to replace i after N with I in a given string
  * @param pat - a pattern variable which will hold the "I" string
@@ -53,7 +54,6 @@ static int getNiCount(const charType *src);
  */
 template <typename charType> 
 static std::basic_string<charType> replaceNiWithNI(const charType *src);
-
 
 /**
  * Prints  the information on a given string - how many times "Ni" appeared in a string and replaced string
