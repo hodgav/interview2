@@ -18,19 +18,18 @@ e.g: basic_string and basic_regex
 
 C++ template:
 
-
-class MyClass
+ class MyClass
 {
 
 public:
 
-    getNiCount(...)
-    {
-    }
+     getNiCount(...)
+     {
+     }
       
-   replaceNiWithNI(...)
-    {
-    }
+     replaceNiWithNI(...)
+     {
+     }
 };
 
 
