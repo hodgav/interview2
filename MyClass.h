@@ -16,6 +16,12 @@ static void getNiPattern(std::basic_string<char> &pat) {pat = "Ni";}
 static void getNiPattern(std::basic_string<wchar_t> &pat) {pat = L"Ni";} 
 
 /**
+ * set an empty string to a pattern in the case of NULL pointer
+ * @param pat - a pattern variable which will hold the empty string
+ */
+static void getEmptyString(std::basic_string<char> &pat) {pat = "";}
+static void getEmptyString(std::basic_string<wchar_t> &pat) {pat = L"";}
+/**
  * set a pattern of "I" - for either char or wchar_t in order to replace i after N with I in a given string
  * @param pat - a pattern variable which will hold the "I" string
  */
@@ -89,12 +95,13 @@ static int MyClass::getNiCount(const charType *src)
 template <typename charType> 
 static std::basic_string<charType> MyClass::replaceNiWithNI(const charType *src)
 {
-  //A NULL pointer will return itself, since we can't replace in this case
+  //A NULL pointer will return an empty string (nothing to replace)
   if(src == NULL)
   {
-	  /* here i am stuck. i can't return NULL because it isn't the type of std::basic_string<charType> what to do?
-	  and i can't initiliaze std::basic_string<charType> == "" - i can't even return an empty string, what to do?*/
-  }
+    std::basic_string<charType> emptyString;
+	getEmptyString(emptyString);
+	return emptyString;
+   }
 
   std::basic_string<charType> sourceString = src;
 
