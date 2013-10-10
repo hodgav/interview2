@@ -18,9 +18,12 @@ e.g: basic_string and basic_regex
 
 C++ template:
 
+
 class MyClass
 {
+
 public:
+
     getNiCount(...)
     {
     }
@@ -30,6 +33,7 @@ public:
     }
 };
 
+
 int main()
 {
 
@@ -37,7 +41,9 @@ const char *szTestString1 = "Ni nI NI nI Ni";
 const wchar_t *szTestString2 = L"Ni nI NI nI Ni";
 
 //Invoke getNiCount(...) of class MyClass
+
 //Invoke replaceNiWithNI(...) of class MyClass
+
 
 //Display on screen: "Found X occurrences of Ni. New string: Y"
 
