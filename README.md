@@ -33,10 +33,12 @@ public:
 };
 
 
+
 int main()
 {
 
 const char *szTestString1 = "Ni nI NI nI Ni";
+
 const wchar_t *szTestString2 = L"Ni nI NI nI Ni";
 
 //Invoke getNiCount(...) of class MyClass
