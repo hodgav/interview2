@@ -60,7 +60,7 @@ static void printInformation(const charType *src);
 }; 
 
 template <typename charType>
-int MyClass::getNiCount(const charType *src)
+static int MyClass::getNiCount(const charType *src)
 {   
   //return -1 for a NULL pointer in order to alert the user
   if (src == NULL)
@@ -87,7 +87,7 @@ int MyClass::getNiCount(const charType *src)
 }
 
 template <typename charType> 
-std::basic_string<charType> MyClass::replaceNiWithNI(const charType *src)
+static std::basic_string<charType> MyClass::replaceNiWithNI(const charType *src)
 {
   if (src == NULL)
 	 return src;
@@ -114,7 +114,7 @@ std::basic_string<charType> MyClass::replaceNiWithNI(const charType *src)
 }
 
 template <typename charType>
-void MyClass::printInformation(const charType *src)
+static void MyClass::printInformation(const charType *src)
 {
   if (src == NULL)
   {
