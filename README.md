@@ -21,17 +21,18 @@ C++ template:
 class MyClass
 {
 public:
-      getNiCount(...)
-       {
-        }
+    getNiCount(...)
+    {
+    }
       
-      replaceNiWithNI(...)
-       {
-       }
+   replaceNiWithNI(...)
+    {
+    }
 };
 
 int main()
 {
+
 const char *szTestString1 = "Ni nI NI nI Ni";
 const wchar_t *szTestString2 = L"Ni nI NI nI Ni";
 
