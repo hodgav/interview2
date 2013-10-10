@@ -1,3 +1,0 @@
-1. they ask to replace all the "Ni" with "NI" what i did was constructing a new string and returning it.
-does it seem fine to you? because i a get const char, i don't want to change it.
-and i also can't use malloc/new... so i think it's the only solution here.
