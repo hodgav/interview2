@@ -1,5 +1,4 @@
-as you can see, i have two functions which i am having trouble deciding what to do in case of which
-src is a NULL Pointer.
+as you can see, i have two functions which i am having trouble deciding what to do at the case where *src is a NULL pointer
 
 in getNiCount i return -1 if the pointer is NULL. do you think in this case i should return NULL too?
 
