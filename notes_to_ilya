@@ -2,11 +2,21 @@ as you can see, i have two functions which i am having trouble deciding what to 
 
 in getNiCount i return -1 if the pointer is NULL. do you think in this case i should return NULL too?
 
+
 in replaceNiWithNI
 i have a problem. 
 the return type of this function is std::basic_string<charType>
 i can not , on any case, return NULL or -1.
 i did use templates there, as you can see.
+also, read this:
+http://stackoverflow.com/questions/930932/returning-different-data-type-depending-on-the-data-c
+ 
+ "No. The return type of a C++ function can only vary based on
+ explicit template parameters or the types of its arguments.
+ It cannot vary based on the value of its arguments."
+ 
+ so i recieve a pointer which is either of const char* or const wchar_t*
+ only if its VALUE is null i want to return NULL. by what this guy is saying - it's impossible.
 
 please suggest me what can be done
 
