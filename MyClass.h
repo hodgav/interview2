@@ -35,7 +35,8 @@ public:
 /**
  * calculates the number of times that "Ni" appears in a given string
  * @param src - a pointer to the string (which is either char or wchar_t) to be checked 
- * @return the number of appearences of "Ni" in a given string. Throws an exception for a null pointer
+ * @return the number of appearences of "Ni" in a given string. 
+ - @throws std::invalid_argument exception if src is a null pointer
  */
 template <typename charType>
 static int getNiCount(const charType *src);
@@ -43,7 +44,8 @@ static int getNiCount(const charType *src);
 /**
  * Given a string, this method returns a string in which all of the "Ni" is replaced with "NI"
  * @param src - a pointer to the string (which is either char or wchar_t) to be given for replacement 
- * @return a string in which all of the "Ni" is replaced with "NI". Throws an exception for a null pointer
+ * @return a string in which all of the "Ni" is replaced with "NI". 
+ * @throws std::invalid_argument exception if src is a null pointer
  */
 template <typename charType> 
 static std::basic_string<charType> replaceNiWithNI(const charType *src);
