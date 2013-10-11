@@ -5,16 +5,19 @@
 int main()
 {
   //Basic strings (were given in the exercise)
-  const char    *szTestString1 =  "Ni nl Nl nl Ni";
-  const wchar_t *szTestString2 = L"Ni nl Nl nl Ni";
+  const char    *szTestString1 =  "Ni nI NI nI Ni";
+  const wchar_t *szTestString2 = L"Ni nI NI nI Ni";
 
   //My strings (for testing)
-  const char    *szTestString3 = "";
-  const wchar_t *szTestString4 = L"";
-  const char    *szTestString5 = "N";
-  const wchar_t *szTestString6 = L"N";
-  const char    *szTestString7 = NULL;
-  const wchar_t *szTestString8 = NULL;
+  const char    *szTestString3 = "N i Ni  N  I ni IN Ni  Ni  n i Ni";
+  const wchar_t *szTestString4 = L"N i Ni  N  I ni IN Ni  Ni  n i Ni";
+  const char    *szTestString5 = "";
+  const wchar_t *szTestString6 = L"";
+  const char    *szTestString7 = "N";
+  const wchar_t *szTestString8 = L"N";
+  const char    *szTestString9 = NULL;
+  const wchar_t *szTestString10 = NULL;
+
 
   //Print the information which was asked in the exercise
   MyClass::printInformation(szTestString1);
@@ -29,6 +32,10 @@ int main()
   MyClass::printInformation(szTestString6);
   MyClass::printInformation(szTestString7);
   MyClass::printInformation(szTestString8);
+  MyClass::printInformation(szTestString9);
+  MyClass::printInformation(szTestString10);
+
+  getchar();
 
   return 0;
 }
