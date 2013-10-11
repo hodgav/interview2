@@ -16,13 +16,6 @@ static void getNiPattern(std::basic_string<char> &pat) {pat = "Ni";}
 static void getNiPattern(std::basic_string<wchar_t> &pat) {pat = L"Ni";} 
 
 /**
- * set an empty string to a pattern in the case of NULL pointer
- * @param pat - a pattern variable which will hold the empty string
- */
-static void getEmptyString(std::basic_string<char> &pat) {pat = "";}
-static void getEmptyString(std::basic_string<wchar_t> &pat) {pat = L"";}
-
-/**
  * set a pattern of "I" - for either char or wchar_t in order to replace i after N with I in a given string
  * @param pat - a pattern variable which will hold the "I" string
  */
@@ -42,7 +35,7 @@ public:
 /**
  * calculates the number of times that "Ni" appears in a given string
  * @param src - a pointer to the string (which is either char or wchar_t) to be checked 
- * @return the number of appearences of "Ni" in a given string. -1 for a NULL pointer
+ * @return the number of appearences of "Ni" in a given string. Throws an exception for a null pointer
  */
 template <typename charType>
 static int getNiCount(const charType *src);
@@ -50,7 +43,7 @@ static int getNiCount(const charType *src);
 /**
  * Given a string, this method returns a string in which all of the "Ni" is replaced with "NI"
  * @param src - a pointer to the string (which is either char or wchar_t) to be given for replacement 
- * @return a tsring in which all of the "Ni" is replaced with "NI"
+ * @return a string in which all of the "Ni" is replaced with "NI". Throws an exception for a null pointer
  */
 template <typename charType> 
 static std::basic_string<charType> replaceNiWithNI(const charType *src);
@@ -68,74 +61,74 @@ static void printInformation(const charType *src);
 template <typename charType>
 static int MyClass::getNiCount(const charType *src)
 {   
-  //return -1 for a NULL pointer in order to alert the user
-  if (src == NULL)
-      return -1;
+	 //Throw an exception for a null pointer
+	 if(src == NULL)
+		 throw std::invalid_argument("A null pointer was received (MyClass::getNiCount)");
 
-  int numOfNi = 0;
-  std::basic_string<charType> sourceString = src;
+	 int numOfNi = 0;
+	 std::basic_string<charType> sourceString = src;
 
-  //Strings of sizes 0-1 have 0 appearences of Ni
-  if(sourceString.length() < 2)
-     return numOfNi;
+	  //Strings of sizes 0-1 have 0 appearences of Ni
+	 if(sourceString.length() < 2)
+		 return numOfNi;
 
-  std::basic_string<charType> patternNi;
-  getNiPattern(patternNi);    
-  std::string::size_type currentLocation = sourceString.find(patternNi);
+	 std::basic_string<charType> patternNi;
+	 getNiPattern(patternNi);    
+	 std::string::size_type currentLocation = sourceString.find(patternNi);
 
-  //Going through the string and finding all appearences of Ni
-  while(currentLocation != std::basic_string<charType>::npos)
-  {
-    currentLocation = sourceString.find(patternNi, currentLocation + 2);
-    ++numOfNi;
-  }
-  return numOfNi;
+	 //Going through the string and finding all appearences of Ni
+     while(currentLocation != std::basic_string<charType>::npos)
+	 {
+		 currentLocation = sourceString.find(patternNi, currentLocation + 2);
+		 ++numOfNi;
+	 }
+	 return numOfNi;
 }
 
 template <typename charType> 
 static std::basic_string<charType> MyClass::replaceNiWithNI(const charType *src)
 {
-  //A NULL pointer will return an empty string (nothing to replace)
-  if(src == NULL)
-  {
-    std::basic_string<charType> emptyString;
-	getEmptyString(emptyString);
-	return emptyString;
-   }
+	//Throw an exception for a NULL pointer
+	if (src==NULL)
+		throw std::invalid_argument("A null pointer was received (MyClass::replaceNiWithNI)");
 
-  std::basic_string<charType> sourceString = src;
+    std::basic_string<charType> sourceString = src;
 
-  //No need to change strings of sizes 0-1
-  if(sourceString.length() < 2)
-     return sourceString;
+	//Srings with length of 0-1 do not need any change
+    if(sourceString.length() < 2)
+      return sourceString;
 
-  std::basic_string<charType> stringWithNIOnly(sourceString);
-  std::basic_string<charType> patternNi , replacementChar;
-  getReplacementChar(replacementChar); 
-  getNiPattern(patternNi);    
-  std::string::size_type currentLocation = stringWithNIOnly.find(patternNi);
+    std::basic_string<charType> stringWithNIOnly(sourceString);
+    std::basic_string<charType> patternNi , replacementChar;
+    getReplacementChar(replacementChar); 
+    getNiPattern(patternNi);    
+    std::string::size_type currentLocation = stringWithNIOnly.find(patternNi);
 
-  //Going through the string and replacing all the Ni with NI, by replacing i after N with I
-  while(currentLocation != std::basic_string<charType>::npos)
-  {
-    stringWithNIOnly.replace((currentLocation + 1), 1, replacementChar);
-    currentLocation = stringWithNIOnly.find(patternNi, currentLocation + 2);
-  }
-  return stringWithNIOnly;
+    //Going through the string and replacing all the Ni with NI, by replacing i after N with I
+    while(currentLocation != std::basic_string<charType>::npos)
+    {
+		stringWithNIOnly.replace((currentLocation + 1), 1, replacementChar);
+        currentLocation = stringWithNIOnly.find(patternNi, currentLocation + 2);
+	}
+    return stringWithNIOnly;
+  
 }
 
 template <typename charType>
 static void MyClass::printInformation(const charType *src)
 {
-  if (src == NULL)
-  {
-    std::cerr << "Error: A NULL pointer was received" << std::endl;
-	return;
-  }
-  std::cout << "Found " << getNiCount(src) << " occurrences of Ni. New string: " ;
-  std::basic_string<charType> stringWithNIOnly = replaceNiWithNI(src);
-  printNewString(stringWithNIOnly);
-  std::cout << std::endl;
+	try
+	{
+		std::cout << "Found " << getNiCount(src) << " occurrences of Ni. New string: " ;
+		std::basic_string<charType> stringWithNIOnly = replaceNiWithNI(src);
+		printNewString(stringWithNIOnly);
+		std::cout << std::endl;
+	}
+	catch(const std::invalid_argument &e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
+
 }
 
 #endif
