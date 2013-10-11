@@ -89,7 +89,7 @@ template <typename charType>
 static std::basic_string<charType> MyClass::replaceNiWithNI(const charType *src)
 {
 	//Throw an exception for a NULL pointer
-	if (src==NULL)
+	if (src == NULL)
 		throw std::invalid_argument("A null pointer was received (MyClass::replaceNiWithNI)");
 
     std::basic_string<charType> sourceString = src;
