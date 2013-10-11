@@ -17,6 +17,8 @@ http://stackoverflow.com/questions/930932/returning-different-data-type-dependin
  
  so i recieve a pointer which is either of const char* or const wchar_t*
  only if its VALUE is null i want to return NULL. by what this guy is saying - it's impossible.
+ 
+an idea: to throw exception on both function when i receive a null pointer (how to do it? can't figure out)
 
 please suggest me what can be done
 
