@@ -1,6 +1,7 @@
 #include<string>
 #include "MyClass.h"
 
+
 int main()
 {
   //Basic strings (were given in the exercise)
@@ -28,18 +29,6 @@ int main()
   MyClass::printInformation(szTestString6);
   MyClass::printInformation(szTestString7);
   MyClass::printInformation(szTestString8);
-
-  if(MyClass::getNiCount(szTestString7) == -1)
-	  std::cout << "szTestString7 is NULL, can not count number of Ni" << std::endl;
-
-  if(MyClass::replaceNiWithNI(szTestString7) == "")
-	  std::cout << "szTestString7 is empty or NULL, no need for replacements" << std::endl;
-
-  if(MyClass::getNiCount(szTestString8) == -1)
-	  std::cout << "szTestString8 is NULL, can not count number of Ni" << std::endl;
-
-  if(MyClass::replaceNiWithNI(szTestString8) == L"")
-	  std::cout << "szTestString8 is empty or NULL, no need for replacements" << std::endl;
 
   return 0;
 }
